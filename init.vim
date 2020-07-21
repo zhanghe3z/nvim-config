@@ -22,19 +22,18 @@ noremap H I
 map s <nop>
 map Q :q<CR>
 map R :source $MYVIMRC <CR> 
-nnoremap j :AnyJump<CR>
+nnoremap <c-j> :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 let g:nrrw_rgn_nomap_nr = 1
 let g:nrrw_rgn_nomap_Nr = 1
-noremap <c-y> :NR<CR>
- 
 
 set hlsearch
 exec "nohlsearch"
 set incsearch
 set ignorecase
 set smartcase
+set mouse=a
 noremap <LEADER><CR> :nohlsearch <CR>
 noremap = nzz
 noremap - Nzz
@@ -79,7 +78,7 @@ func! CompileRunGcc()
     set splitbelow
     :sp
     :term python3 %
-  elseif &filetype == 'html'
+  elseif &filetype == 'html'  
     silent! exec "!chromium % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
@@ -137,7 +136,7 @@ Plug 'airblade/vim-rooter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pechorin/any-jump.vim'
 Plug 'SirVer/ultisnips'
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+"Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'zhanghe3z/vim-snippets'
 call plug#end()
 
@@ -176,6 +175,32 @@ colorscheme space_vim_theme
 
 
 
+
+
+
+
+
+" ===
+" === rnvimr
+" ===
+"noremap <c-r> :RnvimrToggle<CR>
+"let g:rnvimr_enable_ex = 1
+"let g:rnvimr_draw_border = 0
+"let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"
+"            \ --cmd="set draw_borders both"'
+"let g:rnvimr_enable_bw = 1
+"let g:rnvimr_layout = { 'relative': 'editor',
+"            \ 'width': float2nr(round(0.6 * &columns)),
+"            \ 'height': float2nr(round(0.6 * &lines)),
+"            \ 'col': float2nr(round(0.2 * &columns)),
+"            \ 'row': float2nr(round(0.2 * &lines)),
+"            \ 'style': 'minimal' 
+
+
+
+
+
+
 " ===
 " === Python-syntax
 " ===
@@ -187,9 +212,8 @@ let g:python_highlight_all = 1
 " === Other useful stuff
 " ===
 autocmd BufEnter * silent! lcd %:p:h
-
-
-
+nnoremap <c-c> "+yy
+nnoremap <c-v> "+p
 
 
 
