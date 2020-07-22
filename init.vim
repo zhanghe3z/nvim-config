@@ -2,7 +2,9 @@
 set nocompatible
 source $VIMRUNTIME/mswin.vim
 behave mswin
-
+set fileencoding=utf-8
+set fileencodings=utf-8
+set encoding=utf-8
 
 source $VIMRUNTIME/delmenu.vim 
 source $VIMRUNTIME/menu.vim
@@ -139,7 +141,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mindriot101/vim-yapf'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'airblade/vim-rooter'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 Plug 'pechorin/any-jump.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vim-python/python-syntax'
@@ -180,13 +183,15 @@ let g:UltiSnipsJumpBackwardTrigger="<k>"
 set termguicolors     " enable true colors support
 
 let g:indent_guides_enable_on_vim_startup = 1
-hi IndentGuidesOdd  ctermbg=darkgrey
-hi IndentGuidesEven ctermbg=grey
+"hi IndentGuidesOdd  ctermbg=darkgrey
+"hi IndentGuidesEven ctermbg=grey
 colorscheme gruvbox9
 let g:gruvbox_filetype_hi_groups = 1
 let g:gruvbox_transp_bg = 1
 syntax on
 set termguicolors
+let g:indentLine_setColors = 0
+
 
 " ===
 " === rnvimr
