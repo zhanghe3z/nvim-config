@@ -1,4 +1,4 @@
-let mapleader = ' '
+
 set nocompatible
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -19,10 +19,17 @@ noremap K 5j
 noremap h i
 noremap H I
 
+let mapleader=","
+map <c-w>h :sp<CR>
+map <c-w>v :vsp<CR>
 map s <nop>
 map Q :q<CR>
 map R :source $MYVIMRC <CR> 
 nnoremap <c-j> :AnyJump<CR>
+noremap <c-w>j  <c-w>h 
+noremap <c-w>i  <c-w>k
+noremap <c-w>k  <c-w>j  
+
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 let g:nrrw_rgn_nomap_nr = 1
@@ -36,7 +43,6 @@ set smartcase
 set mouse=a
 noremap <LEADER><CR> :nohlsearch <CR>
 noremap = nzz
-noremap - Nzz
 
 
 set number
@@ -117,7 +123,7 @@ autocmd guienter * call libcallnr("vimtweak","SetAlpha",222)
 endif 
       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
     endif
-  else
+else
     let cmd = $VIMRUNTIME . '\diff'
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
@@ -136,8 +142,11 @@ Plug 'airblade/vim-rooter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pechorin/any-jump.vim'
 Plug 'SirVer/ultisnips'
+Plug 'vim-python/python-syntax'
 "Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'zhanghe3z/vim-snippets'
+Plug 'powerline/powerline'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 
@@ -169,16 +178,9 @@ let g:UltiSnipsJumpBackwardTrigger="<k>"
 set termguicolors     " enable true colors support
 let g:space_vim_transp_bg = 1
 let g:indent_guides_enable_on_vim_startup = 1
-hi IndentGuidesOdd  ctermbg=white
-hi IndentGuidesEven ctermbg=lightgrey
+hi IndentGuidesOdd  ctermbg=darkgrey
+hi IndentGuidesEven ctermbg=grey
 colorscheme space_vim_theme
-
-
-
-
-
-
-
 
 " ===
 " === rnvimr
@@ -195,7 +197,6 @@ colorscheme space_vim_theme
 "            \ 'col': float2nr(round(0.2 * &columns)),
 "            \ 'row': float2nr(round(0.2 * &lines)),
 "            \ 'style': 'minimal' 
-
 
 
 
