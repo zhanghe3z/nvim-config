@@ -148,7 +148,7 @@ Plug 'zhanghe3z/vim-snippets'
 Plug 'powerline/powerline'
 Plug 'preservim/nerdcommenter'
 Plug 'skreek/skeletor.vim'
-Plug 'morhetz/gruvbox'
+Plug 'hardcoreplayers/gruvbox9'
 call plug#end()
 
 
@@ -178,11 +178,13 @@ let g:UltiSnipsJumpBackwardTrigger="<k>"
 " === Dress up my vim
 " ===
 set termguicolors     " enable true colors support
-let g:space_vim_transp_bg = 1
+
 let g:indent_guides_enable_on_vim_startup = 1
 hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=grey
-colorscheme space_vim_theme		
+colorscheme gruvbox9
+let g:gruvbox_filetype_hi_groups = 1
+let g:gruvbox_transp_bg = 1
 syntax on
 set termguicolors
 
@@ -255,4 +257,3 @@ let g:airline_powerline_fonts = 0
 if executable("vimtweak.dll") 
 	autocmd guienter * call libcallnr("vimtweak","SetAlpha",222) 
 endif 
-
