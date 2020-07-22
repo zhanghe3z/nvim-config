@@ -147,6 +147,8 @@ Plug 'vim-python/python-syntax'
 Plug 'zhanghe3z/vim-snippets'
 Plug 'powerline/powerline'
 Plug 'preservim/nerdcommenter'
+Plug 'skreek/skeletor.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 
@@ -180,7 +182,9 @@ let g:space_vim_transp_bg = 1
 let g:indent_guides_enable_on_vim_startup = 1
 hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=grey
-colorscheme space_vim_theme
+colorscheme space_vim_theme		
+syntax on
+set termguicolors
 
 " ===
 " === rnvimr
