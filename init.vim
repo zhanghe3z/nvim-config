@@ -20,6 +20,12 @@ noremap I 5k
 noremap K 5j
 noremap h i
 noremap H I
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap < <><ESC>i
+
+
 
 let mapleader=","
 map <c-w>h :sp<CR>
@@ -160,6 +166,10 @@ call plug#end()
 " ===
 
 let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_list_select_completion=['<c-k>']
+let g:ycm_key_list_previous_completion=['<c-i>']
+
 
 
 " ===
@@ -226,9 +236,9 @@ let g:python_highlight_all = 1
 autocmd BufEnter * silent! lcd %:p:h
 nnoremap <c-c> "+yy
 nnoremap <c-v> "+p
-
-
-
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+set foldenable
+ set foldmethod=indent
 " ===
 " === Airline
 " ===
