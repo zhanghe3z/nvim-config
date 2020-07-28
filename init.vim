@@ -30,10 +30,13 @@ inoremap < <><ESC>i
 let mapleader=","
 map <c-w>h :sp<CR>
 map <c-w>v :vsp<CR>
+map <c-w>c :tabc<CR>
+map <c-w>m :tabp<CR>
+map <c-w>M :tabn<CR>
 map s <nop>
 map Q :q<CR>
 map R :source $MYVIMRC <CR> 
-nnoremap <c-j> :AnyJump<CR>
+nmap J :AnyJump<CR>
 noremap <c-w>j  <c-w>h 
 noremap <c-w>i  <c-w>k
 noremap <c-w>k  <c-w>j  
