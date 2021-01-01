@@ -99,6 +99,8 @@ func! CompileRunGcc()
     silent! exec "!chromium % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
+  elseif &filetype == 'matlab'
+	exec "MatlabCliRunCell"
   elseif &filetype == 'tex'
     silent! exec "VimtexStop"
     silent! exec "VimtexCompile"
@@ -140,11 +142,16 @@ else
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+
+
 call plug#begin('~/.vim/plugged')
 Plug 'gmarik/Vundle.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'vim-latex/vim-latex'
 Plug 'airblade/vim-gitgutter'
 Plug 'mindriot101/vim-yapf'
@@ -161,6 +168,9 @@ Plug 'powerline/powerline'
 Plug 'preservim/nerdcommenter'
 Plug 'skreek/skeletor.vim'
 Plug 'hardcoreplayers/gruvbox9'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'plasticboy/vim-markdown'
+Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 call plug#end()
 
 
@@ -185,7 +195,7 @@ set splitbelow
 " === My Snippets
 " ===
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsExpandTrigger="<m-s>"
 let g:UltiSnipsJumpForwardTrigger="<i>"
 let g:UltiSnipsJumpBackwardTrigger="<k>"
 
@@ -270,6 +280,20 @@ set foldenable
 
 let g:airline_powerline_fonts = 0
 
+let g:vim_markdown_frontmatter=1
+
+
+"=== matlab
+"
+map m :call StartMatlab()<CR>
+func! StartMatlab()
+  if &filetype == 'matlab'
+    exec "MatlabLaunchServer"
+  endif
+endfunc
+
+let g:matlab_server_launcher = 'vim' 
+let g:matlab_server_split = 'vertical'
 
 
 if executable("vimtweak.dll") 
